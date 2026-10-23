@@ -1,0 +1,38 @@
+group = "app.keyboardspeed"
+
+patches {
+    about {
+        name = "Prisoner-24601 Keyboard Speed Patches"
+        description = "Adds - and = keyboard shortcuts for the YouTube playback speed"
+        source = "git@github.com:Prisoner-24601/keyboard-speed-patches.git"
+        author = "Prisoner-24601"
+        contact = "https://github.com/Prisoner-24601/keyboard-speed-patches/issues"
+        website = "https://github.com/Prisoner-24601/keyboard-speed-patches"
+        license = "GPLv3"
+    }
+}
+
+// Separate configuration so gson is available at runtime for the
+// generatePatchesList task but never bundled into the APK.
+val patchListGeneratorClasspath = configurations.create("patchListGeneratorClasspath")
+
+dependencies {
+    compileOnly(libs.gson)
+    patchListGeneratorClasspath(libs.gson)
+}
+
+tasks {
+    register<JavaExec>("generatePatchesList") {
+        description = "Build patch with patch list"
+
+        dependsOn(build)
+
+        classpath = sourceSets["main"].runtimeClasspath + patchListGeneratorClasspath
+        mainClass.set("util.PatchListGeneratorKt")
+    }
+
+    // Used by gradle-semantic-release-plugin.
+    publish {
+        dependsOn("generatePatchesList")
+    }
+}

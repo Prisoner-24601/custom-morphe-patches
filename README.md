@@ -25,10 +25,16 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
+> **[v1.0.0](https://github.com/Prisoner-24601/keyboard-speed-patches/releases/tag/v1.0.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;1 patches total
+<details open>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
 
-<!-- Do not modify this section by hand. The patch list is generated when release.yml creates a new release. -->
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Keyboard speed shortcuts](#keyboard-speed-shortcuts) | Makes the - and = keys of a hardware keyboard decrease and increase the playback speed. Apply together with the Morphe YouTube patches, which this patch uses to change the speed. | • Speed step |
 
-#### The patch list is shown here after the first release is created.
+</details>
 
 <!-- PATCHES_END -->
 

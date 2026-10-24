@@ -12,8 +12,9 @@ object Constants {
         apkFileType = ApkFileType.APK_REQUIRED,
         appIconColor = 0xFF0033,
         targets = listOf(
-            // Only hooks the unobfuscated MainActivity, so it follows whatever version
-            // the Morphe YouTube patches it is applied with support.
+            // The patches only change the unobfuscated MainActivity and the code of the
+            // Morphe YouTube patches, so they follow whatever version the Morphe YouTube
+            // patches they are applied with support.
             AppTarget(version = null),
         ),
     )

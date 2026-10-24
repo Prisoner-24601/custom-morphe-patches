@@ -2,12 +2,12 @@ group = "app.keyboardspeed"
 
 patches {
     about {
-        name = "Prisoner-24601 Keyboard Speed Patches"
-        description = "Adds - and = keyboard shortcuts for the YouTube playback speed"
-        source = "git@github.com:Prisoner-24601/keyboard-speed-patches.git"
+        name = "Prisoner-24601 Custom Morphe Patches"
+        description = "Add-on YouTube patches for the Morphe YouTube patches"
+        source = "git@github.com:Prisoner-24601/custom-morphe-patches.git"
         author = "Prisoner-24601"
-        contact = "https://github.com/Prisoner-24601/keyboard-speed-patches/issues"
-        website = "https://github.com/Prisoner-24601/keyboard-speed-patches"
+        contact = "https://github.com/Prisoner-24601/custom-morphe-patches/issues"
+        website = "https://github.com/Prisoner-24601/custom-morphe-patches"
         license = "GPLv3"
     }
 }

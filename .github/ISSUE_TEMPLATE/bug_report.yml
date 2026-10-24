@@ -6,11 +6,11 @@ body:
   - type: markdown
     attributes:
       value: |
-        # Keyboard Speed Patches bug report
+        # Custom Morphe Patches bug report
 
         Before creating a new bug report, please keep the following in mind:
 
-        - **Do not submit a duplicate bug report**: Search for existing bug reports [here](https://github.com/Prisoner-24601/keyboard-speed-patches/issues?q=label%3A%22Bug+report%22).
+        - **Do not submit a duplicate bug report**: Search for existing bug reports [here](https://github.com/Prisoner-24601/custom-morphe-patches/issues?q=label%3A%22Bug+report%22).
   - type: textarea
     attributes:
       label: Bug description

@@ -6,11 +6,11 @@ body:
   - type: markdown
     attributes:
       value: |
-        # Keyboard Speed Patches feature request
+        # Custom Morphe Patches feature request
 
         Before creating a new feature request, please keep the following in mind:
 
-        - **Do not submit a duplicate feature request**: Search for existing feature requests [here](https://github.com/Prisoner-24601/keyboard-speed-patches/issues?q=label%3A%22Feature+request%22).
+        - **Do not submit a duplicate feature request**: Search for existing feature requests [here](https://github.com/Prisoner-24601/custom-morphe-patches/issues?q=label%3A%22Feature+request%22).
   - type: textarea
     attributes:
       label: Feature description

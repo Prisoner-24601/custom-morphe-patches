@@ -4,7 +4,7 @@ Add-on YouTube patches for use with [Morphe](https://morphe.software):
 
 - **Keyboard speed shortcuts**: the `-` and `=` keys of a hardware keyboard decrease and increase
   the playback speed, like `<` and `>` on the YouTube website.
-- **DeArrow original titles**: videos with a DeArrow title show the DeArrow title followed by the
+- **DeArrow original titles**: videos with a DeArrow title show both the DeArrow title and the
   original title, such as `Clear, descriptive title | YOU WON'T BELIEVE WHAT HAPPENED`.
 
 This bundle is an add-on. Its patches work through the official Morphe YouTube patches, so
@@ -36,22 +36,24 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
 - If the original title cannot be fetched, only the DeArrow title is shown until it is fetched again.
 - The DeArrow icon (if enabled in the Morphe settings) is shown before the combined title.
 - Casual mode of DeArrow still works: when it keeps the original title, only the original title is shown.
+- Which title is shown first is the **Title order** patch option: DeArrow title first (default)
+  or original title first.
 - The text between the titles is the **Separator** patch option: ` | `, ` — `, ` • ` or a new line.
 - How it works: after all patches are executed, it changes the DeArrow code of the Morphe YouTube
   patches, so the original title is always fetched for videos with a DeArrow title
-  (`DeArrowTitle.needsOriginalTitle`) and is added after the DeArrow title (`DeArrowTitle.titleFor`).
+  (`DeArrowTitle.needsOriginalTitle`) and is combined with the DeArrow title (`DeArrowTitle.titleFor`).
 
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.1.0](https://github.com/Prisoner-24601/custom-morphe-patches/releases/tag/v1.1.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;2 patches total
+> **[v1.2.0-dev.1](https://github.com/Prisoner-24601/custom-morphe-patches/releases/tag/v1.2.0-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;2 patches total
 <details open>
 <summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
 <br>
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
-| [DeArrow original titles](#dearrow-original-titles) | Shows the original title after the DeArrow title, instead of only the DeArrow title. Apply together with the Morphe YouTube patches, and turn on DeArrow titles in the Morphe settings. | • Separator |
+| [DeArrow original titles](#dearrow-original-titles) | Shows both the DeArrow title and the original title, instead of only the DeArrow title. Apply together with the Morphe YouTube patches, and turn on DeArrow titles in the Morphe settings. | • Separator<br>• Title order |
 | [Keyboard speed shortcuts](#keyboard-speed-shortcuts) | Makes the - and = keys of a hardware keyboard decrease and increase the playback speed. Apply together with the Morphe YouTube patches, which this patch uses to change the speed. | • Speed step |
 
 </details>

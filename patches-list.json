@@ -1,10 +1,10 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.1.0",
+  "version": "1.2.0-dev.1",
   "patches": [
     {
       "name": "DeArrow original titles",
-      "description": "Shows the original title after the DeArrow title, instead of only the DeArrow title. Apply together with the Morphe YouTube patches, and turn on DeArrow titles in the Morphe settings.",
+      "description": "Shows both the DeArrow title and the original title, instead of only the DeArrow title. Apply together with the Morphe YouTube patches, and turn on DeArrow titles in the Morphe settings.",
       "default": true,
       "category": null,
       "compatiblePackages": [
@@ -40,6 +40,18 @@
             "Dash ( — )": " — ",
             "Bullet ( • )": " • ",
             "New line": "\n"
+          }
+        },
+        {
+          "key": "titleOrder",
+          "title": "Title order",
+          "description": "Which title is shown first.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "deArrowFirst",
+          "values": {
+            "DeArrow title first": "deArrowFirst",
+            "Original title first": "originalFirst"
           }
         }
       ]

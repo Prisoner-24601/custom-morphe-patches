@@ -1,1 +1,1 @@
-// Root build configuration for keyboard-speed-patches
+// Root build configuration for custom-morphe-patches

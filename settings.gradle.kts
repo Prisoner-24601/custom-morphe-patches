@@ -1,4 +1,4 @@
-rootProject.name = "keyboard-speed-patches"
+rootProject.name = "custom-morphe-patches"
 
 pluginManagement {
     repositories {

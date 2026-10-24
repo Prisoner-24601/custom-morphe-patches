@@ -1,4 +1,4 @@
-# ⌨️ Keyboard Speed Patches
+# 🧩 Custom Morphe Patches
 
 Add-on YouTube patches for use with [Morphe](https://morphe.software):
 
@@ -12,7 +12,7 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
 
 ### How to use these patches
 
-1. Add this source to Morphe Manager: https://morphe.software/add-source?github=Prisoner-24601/keyboard-speed-patches
+1. Add this source to Morphe Manager: https://morphe.software/add-source?github=Prisoner-24601/custom-morphe-patches
 2. Patch YouTube in **Expert mode**, which gives each source its own tab. Keep your usual
    selection in the Morphe Patches tab and enable the patches you want in this one.
 3. Confirm the "Multiple patch sources selected" warning.
@@ -44,7 +44,7 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.0.0](https://github.com/Prisoner-24601/keyboard-speed-patches/releases/tag/v1.0.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;1 patches total
+> **[v1.0.0](https://github.com/Prisoner-24601/custom-morphe-patches/releases/tag/v1.0.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;1 patches total
 <details open>
 <summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
 <br>

@@ -1,3 +1,9 @@
+## [1.2.0](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.1.0...v1.2.0) (2026-10-24)
+
+### ✨ New Features
+
+* Add title order option to DeArrow original titles ([e01e62e](https://github.com/Prisoner-24601/custom-morphe-patches/commit/e01e62e4ce29bba2879343789f8182d4cc376cb4))
+
 ## [1.2.0-dev.1](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.1.0...v1.2.0-dev.1) (2026-10-24)
 
 ### ✨ New Features

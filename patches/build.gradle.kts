@@ -3,7 +3,7 @@ group = "app.keyboardspeed"
 patches {
     about {
         name = "Prisoner-24601 Keyboard Speed Patches"
-        description = "Adds - and = keyboard shortcuts for the YouTube playback speed"
+        description = "Add-on YouTube patches for the Morphe YouTube patches"
         source = "git@github.com:Prisoner-24601/keyboard-speed-patches.git"
         author = "Prisoner-24601"
         contact = "https://github.com/Prisoner-24601/keyboard-speed-patches/issues"

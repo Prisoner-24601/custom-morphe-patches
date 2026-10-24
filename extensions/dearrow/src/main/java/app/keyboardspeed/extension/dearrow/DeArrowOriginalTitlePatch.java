@@ -7,7 +7,8 @@ import java.util.Locale;
 import java.util.Set;
 
 /**
- * Shows the original title after the DeArrow title, such as "DeArrow title | Original title".
+ * Shows both the DeArrow title and the original title, such as "DeArrow title | Original title",
+ * in the order chosen in the patch options.
  * <p>
  * The patch makes the DeArrow code of the official Morphe YouTube patches always fetch the original
  * title of a video that has a DeArrow title, and passes both titles to {@link #combineTitles}.
@@ -39,11 +40,19 @@ public final class DeArrowOriginalTitlePatch {
     }
 
     /**
+     * If the original title is shown before the DeArrow title.
+     * The body is replaced at patch time with the order chosen in the patch options.
+     */
+    private static boolean isOriginalTitleFirst() {
+        return false;
+    }
+
+    /**
      * Injection point. Called off the main thread, by multiple threads at the same time.
      *
      * @param deArrowTitle  The DeArrow title, or null if Morphe shows the original title instead.
      * @param originalTitle The title as set by the uploader, or null if it failed to fetch.
-     * @return The DeArrow title followed by the original title, or the DeArrow title
+     * @return Both titles in the chosen order, or the DeArrow title
      *         if there is no original title or both titles are the same.
      */
     public static String combineTitles(String deArrowTitle, String originalTitle) {
@@ -57,7 +66,9 @@ public final class DeArrowOriginalTitlePatch {
                 return deArrowTitle;
             }
 
-            String combined = deArrowTitle.trim() + getSeparator() + original;
+            String combined = isOriginalTitleFirst()
+                    ? original + getSeparator() + deArrowTitle.trim()
+                    : deArrowTitle.trim() + getSeparator() + original;
             registerDeArrowTitle(combined);
             return combined;
         } catch (Exception ex) {

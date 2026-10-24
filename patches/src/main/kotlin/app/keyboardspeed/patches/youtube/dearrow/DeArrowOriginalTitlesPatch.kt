@@ -31,6 +31,9 @@ private const val DEARROW_TITLE_CLASS =
  */
 private const val TITLE_FOR_WITHOUT_ORIGINAL = "titleForWithoutOriginalTitle"
 
+private const val TITLE_ORDER_DEARROW_FIRST = "deArrowFirst"
+private const val TITLE_ORDER_ORIGINAL_FIRST = "originalFirst"
+
 private const val MORPHE_PATCHES_MISSING =
     "The DeArrow code of the Morphe YouTube patches was not found. " +
         "Apply this patch together with the official Morphe Patches source."
@@ -70,7 +73,7 @@ private fun String.toSmaliLiteral() = buildString {
 @Suppress("unused")
 val deArrowOriginalTitlesPatch = bytecodePatch(
     name = "DeArrow original titles",
-    description = "Shows the original title after the DeArrow title, instead of only the DeArrow title. " +
+    description = "Shows both the DeArrow title and the original title, instead of only the DeArrow title. " +
         "Apply together with the Morphe YouTube patches, and turn on DeArrow titles in the Morphe settings.",
     default = true,
 ) {
@@ -92,7 +95,27 @@ val deArrowOriginalTitlesPatch = bytecodePatch(
         required = true,
     ) { !it.isNullOrEmpty() }
 
+    val titleOrder by stringOption(
+        key = "titleOrder",
+        default = TITLE_ORDER_DEARROW_FIRST,
+        values = mapOf(
+            "DeArrow title first" to TITLE_ORDER_DEARROW_FIRST,
+            "Original title first" to TITLE_ORDER_ORIGINAL_FIRST,
+        ),
+        title = "Title order",
+        description = "Which title is shown first.",
+        required = true,
+    ) { it == TITLE_ORDER_DEARROW_FIRST || it == TITLE_ORDER_ORIGINAL_FIRST }
+
     execute {
+        OriginalTitleFirstFingerprint.method.addInstructions(
+            0,
+            """
+                const/4 v0, ${if (titleOrder == TITLE_ORDER_ORIGINAL_FIRST) "0x1" else "0x0"}
+                return v0
+            """,
+        )
+
         SeparatorFingerprint.method.addInstructions(
             0,
             """

@@ -8,3 +8,10 @@ internal object SeparatorFingerprint : Fingerprint(
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
 )
+
+internal object OriginalTitleFirstFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS,
+    name = "isOriginalTitleFirst",
+    returnType = "Z",
+    parameters = listOf(),
+)

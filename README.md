@@ -83,8 +83,7 @@ holding Ctrl or with Meta + `/`, depending on the device. They are listed under
 
 ## 🧑‍💻 Development
 
-- Make changes on the `dev` branch and merge `dev` into `main` for a stable release
-  (merge, do not squash).
+- Commit to `main`: each push with a release-worthy commit publishes a stable release.
 - Use semantic commit messages: `feat:` and `fix:` create releases, `chore:` does not.
 - Do not edit the generated `patches-list.json`, `patches-bundle.json` or `CHANGELOG.md` by hand.
 

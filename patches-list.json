@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "patches": [
     {
       "name": "DeArrow original titles",
@@ -135,6 +135,47 @@
             "F": "F",
             "G": "G",
             "T": "T"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Keyboard minimize shortcut",
+      "description": "Makes a key of a hardware keyboard (Esc by default) minimize the open video to the miniplayer, also from fullscreen or with the comments open.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.youtube",
+          "name": "YouTube",
+          "description": null,
+          "apkFileType": "APK_REQUIRED",
+          "appIconColor": "#FF0033",
+          "signatures": null,
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "minimizeKey",
+          "title": "Key",
+          "description": "The key that minimizes the video: Esc, Backspace, Tab, or a single letter or digit.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "Esc",
+          "values": {
+            "Esc": "Esc",
+            "Backspace": "Backspace",
+            "N": "N"
           }
         }
       ]

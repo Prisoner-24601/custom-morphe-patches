@@ -1,3 +1,9 @@
+## [1.4.0](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.3.0...v1.4.0) (2026-11-12)
+
+### ✨ New Features
+
+* Add keyboard minimize shortcut, drop the shortcuts list ([03dfcd6](https://github.com/Prisoner-24601/custom-morphe-patches/commit/03dfcd6b36df47128979c3f9b3762aa6b7ae074e))
+
 ## [1.3.0](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.2.0...v1.3.0) (2026-11-12)
 
 ### ✨ New Features

@@ -19,14 +19,22 @@ internal const val EXTENSION_SHORTCUTS_CLASS = "Lapp/keyboardspeed/extension/Key
 internal const val EXTENSION_SPEED_CLASS = "Lapp/keyboardspeed/extension/KeyboardSpeedPatch;"
 internal const val EXTENSION_COMMENTS_CLASS = "Lapp/keyboardspeed/extension/KeyboardCommentsPatch;"
 internal const val EXTENSION_FULLSCREEN_CLASS = "Lapp/keyboardspeed/extension/KeyboardFullscreenPatch;"
+internal const val EXTENSION_MINIMIZE_CLASS = "Lapp/keyboardspeed/extension/KeyboardMinimizePatch;"
 
 private const val EXTENSION_DISPATCH_KEY_EVENT =
     "$EXTENSION_SHORTCUTS_CLASS->dispatchKeyEvent(Landroid/app/Activity;Landroid/view/KeyEvent;)Z"
-private const val EXTENSION_PROVIDE_KEYBOARD_SHORTCUTS =
-    "$EXTENSION_SHORTCUTS_CLASS->onProvideKeyboardShortcuts(Landroid/app/Activity;Ljava/util/List;)V"
 
 private const val DISPATCH_KEY_EVENT_PARAMETERS = "Landroid/view/KeyEvent;"
-private const val PROVIDE_KEYBOARD_SHORTCUTS_PARAMETERS = "Ljava/util/List;Landroid/view/Menu;I"
+
+/**
+ * Keys with a name instead of a single character, such as "Esc".
+ */
+private val NAMED_KEY_CODES = mapOf(
+    "ESC" to 111, // KeyEvent.KEYCODE_ESCAPE
+    "ESCAPE" to 111,
+    "BACKSPACE" to 67, // KeyEvent.KEYCODE_DEL
+    "TAB" to 61, // KeyEvent.KEYCODE_TAB
+)
 
 private fun MutableMethod.isMethod(name: String, returnType: String, parameters: String) =
     this.name == name &&
@@ -69,25 +77,26 @@ internal fun BytecodePatchContext.returnConstant(classType: String, methodName: 
     )
 }
 
-/**
- * @return The Android key code of a letter or digit key, such as KEYCODE_M for "M".
- */
-internal fun keyCodeOf(key: String): Int {
-    val char = key.trim().uppercase().singleOrNull()
-        ?: throw PatchException("The key must be a single letter or digit: '$key'")
-    return when (char) {
-        in 'A'..'Z' -> 29 + (char - 'A') // KeyEvent.KEYCODE_A
-        in '0'..'9' -> 7 + (char - '0') // KeyEvent.KEYCODE_0
-        else -> throw PatchException("The key must be a single letter or digit: '$key'")
+private fun keyCodeOrNull(key: String?): Int? {
+    val name = key?.trim()?.uppercase() ?: return null
+    NAMED_KEY_CODES[name]?.let { return it }
+    return when (val char = name.singleOrNull()) {
+        in 'A'..'Z' -> 29 + (char!! - 'A') // KeyEvent.KEYCODE_A
+        in '0'..'9' -> 7 + (char!! - '0') // KeyEvent.KEYCODE_0
+        else -> null
     }
 }
 
-internal fun isValidKey(key: String?) =
-    key != null && key.trim().length == 1 && key.trim().uppercase()[0].let { it in 'A'..'Z' || it in '0'..'9' }
+/**
+ * @return The Android key code of a letter, digit or named key, such as KEYCODE_M for "M" or KEYCODE_ESCAPE for "Esc".
+ */
+internal fun keyCodeOf(key: String): Int =
+    keyCodeOrNull(key) ?: throw PatchException("The key must be a single letter or digit, Esc, Backspace or Tab: '$key'")
+
+internal fun isValidKey(key: String?) = keyCodeOrNull(key) != null
 
 /**
- * Hooks the hardware keyboard keys and the keyboard shortcuts list of the main activity,
- * which the keyboard shortcut patches share.
+ * Hooks the hardware keyboard keys of the main activity, which the keyboard shortcut patches share.
  */
 internal val keyboardShortcutsHookPatch = bytecodePatch(
     description = "Hooks the hardware keyboard keys of the video player.",
@@ -144,45 +153,6 @@ internal val keyboardShortcutsHookPatch = bytecodePatch(
                             move-result v0
                             :handled
                             return v0
-                        """,
-                    )
-                },
-            )
-        }
-
-        // onProvideKeyboardShortcuts: the shortcuts are added to the keyboard shortcuts list of the system.
-        removeFinalFlagOfSuperclasses(mainActivity, "onProvideKeyboardShortcuts", "V", PROVIDE_KEYBOARD_SHORTCUTS_PARAMETERS)
-        val existingProvide = mainActivity.methods.firstOrNull {
-            it.isMethod("onProvideKeyboardShortcuts", "V", PROVIDE_KEYBOARD_SHORTCUTS_PARAMETERS)
-        }
-        if (existingProvide != null) {
-            existingProvide.removeFinalFlag()
-            existingProvide.addInstructions(
-                0,
-                "invoke-static { p0, p1 }, $EXTENSION_PROVIDE_KEYBOARD_SHORTCUTS",
-            )
-        } else {
-            mainActivity.methods.add(
-                ImmutableMethod(
-                    mainActivity.type,
-                    "onProvideKeyboardShortcuts",
-                    listOf(
-                        ImmutableMethodParameter("Ljava/util/List;", null, null),
-                        ImmutableMethodParameter("Landroid/view/Menu;", null, null),
-                        ImmutableMethodParameter("I", null, null),
-                    ),
-                    "V",
-                    AccessFlags.PUBLIC.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(4),
-                ).toMutable().apply {
-                    addInstructions(
-                        0,
-                        """
-                            invoke-super { p0, p1, p2, p3 }, Landroid/app/Activity;->onProvideKeyboardShortcuts(Ljava/util/List;Landroid/view/Menu;I)V
-                            invoke-static { p0, p1 }, $EXTENSION_PROVIDE_KEYBOARD_SHORTCUTS
-                            return-void
                         """,
                     )
                 },

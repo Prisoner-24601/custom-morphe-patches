@@ -3,19 +3,12 @@ package app.keyboardspeed.extension;
 import android.app.Activity;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.KeyboardShortcutGroup;
-import android.view.KeyboardShortcutInfo;
 import android.widget.EditText;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * Hardware keyboard shortcuts of the video player: playback speed, comments and fullscreen.
+ * Hardware keyboard shortcuts of the video player: playback speed, comments, fullscreen and minimize.
  * <p>
  * Each shortcut is enabled by its own patch, which changes the matching method below at patch time.
- * The shortcuts are also listed in the keyboard shortcuts list of the system,
- * which is shown by holding Ctrl or with Meta + /, depending on the device.
  */
 @SuppressWarnings("unused")
 public final class KeyboardShortcutsPatch {
@@ -38,6 +31,10 @@ public final class KeyboardShortcutsPatch {
         return false;
     }
 
+    private static boolean isMinimizeEnabled() {
+        return false;
+    }
+
     // endregion
 
     /**
@@ -55,40 +52,11 @@ public final class KeyboardShortcutsPatch {
 
             return (isSpeedEnabled() && KeyboardSpeedPatch.handleKey(activity, event))
                     || (isCommentsEnabled() && KeyboardCommentsPatch.handleKey(activity, event))
-                    || (isFullscreenEnabled() && KeyboardFullscreenPatch.handleKey(activity, event));
+                    || (isFullscreenEnabled() && KeyboardFullscreenPatch.handleKey(activity, event))
+                    || (isMinimizeEnabled() && KeyboardMinimizePatch.handleKey(activity, event));
         } catch (Exception ex) {
             Log.e(TAG, "dispatchKeyEvent failure", ex);
             return false;
-        }
-    }
-
-    /**
-     * Injection point.
-     * Adds the shortcuts to the keyboard shortcuts list of the system.
-     */
-    public static void onProvideKeyboardShortcuts(Activity activity, List<KeyboardShortcutGroup> data) {
-        try {
-            if (data == null) {
-                return;
-            }
-
-            List<KeyboardShortcutInfo> shortcuts = new ArrayList<>();
-            if (isSpeedEnabled()) {
-                shortcuts.add(new KeyboardShortcutInfo("Decrease playback speed", KeyEvent.KEYCODE_MINUS, 0));
-                shortcuts.add(new KeyboardShortcutInfo("Increase playback speed", KeyEvent.KEYCODE_EQUALS, 0));
-            }
-            if (isCommentsEnabled()) {
-                shortcuts.add(new KeyboardShortcutInfo("Show or hide comments", KeyboardCommentsPatch.getKeyCode(), 0));
-            }
-            if (isFullscreenEnabled()) {
-                shortcuts.add(new KeyboardShortcutInfo("Enter or exit fullscreen", KeyboardFullscreenPatch.getKeyCode(), 0));
-            }
-
-            if (!shortcuts.isEmpty()) {
-                data.add(new KeyboardShortcutGroup("Video player (Morphe)", shortcuts));
-            }
-        } catch (Exception ex) {
-            Log.e(TAG, "onProvideKeyboardShortcuts failure", ex);
         }
     }
 

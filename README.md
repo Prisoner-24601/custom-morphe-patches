@@ -6,6 +6,7 @@ Add-on YouTube patches for use with [Morphe](https://morphe.software):
   the playback speed, like `<` and `>` on the YouTube website.
 - **Keyboard comments shortcut**: the `M` key shows and hides the comments of the video.
 - **Keyboard fullscreen shortcut**: the `F` key enters and exits fullscreen.
+- **Keyboard minimize shortcut**: the `Esc` key minimizes the video to the miniplayer.
 - **DeArrow original titles**: videos with a DeArrow title show both the DeArrow title and the
   original title, such as `Clear, descriptive title | YOU WON'T BELIEVE WHAT HAPPENED`.
 
@@ -28,22 +29,18 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
   are left alone.
 - The step is the **Speed step** patch option: 0.05x, 0.10x, 0.25x or 0.50x.
 
-### Keyboard comments and fullscreen shortcuts
+### Keyboard comments, fullscreen and minimize shortcuts
 
 - `M` shows the comments panel of the open video, and closes it when it is open.
   `F` enters fullscreen, and exits it in fullscreen.
-- The key of each is its **Key** patch option: any single letter or digit.
+  `Esc` minimizes the video to the miniplayer, also from fullscreen or with the comments open.
+- The key of each is its **Key** patch option: a single letter or digit, `Esc`, `Backspace` or `Tab`.
 - Like the speed keys, they only work while a video is open, and not while typing or with Ctrl/Alt/Meta.
+  Without an open video, `Esc` keeps its usual action of going back.
 - The comments shortcut uses the command router of Morphe Patches 2.2 or newer.
   The fullscreen shortcut uses Morphe's fullscreen controller when **Exit fullscreen mode**,
   **Open videos fullscreen** or **Open Shorts in regular player** is applied, and otherwise
   taps the fullscreen button of the player.
-
-### Keyboard shortcuts list
-
-The keyboard patches add their keys to the keyboard shortcuts list of Android, which is shown by
-holding Ctrl or with Meta + `/`, depending on the device. They are listed under
-**Video player (Morphe)**.
 
 ### DeArrow original titles
 

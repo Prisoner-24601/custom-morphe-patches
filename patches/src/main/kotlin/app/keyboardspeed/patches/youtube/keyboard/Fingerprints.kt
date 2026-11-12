@@ -1,4 +1,4 @@
-package app.keyboardspeed.patches.youtube.speed
+package app.keyboardspeed.patches.youtube.keyboard
 
 import app.morphe.patcher.Fingerprint
 
@@ -9,11 +9,4 @@ internal object MainActivityOnCreateFingerprint : Fingerprint(
     name = "onCreate",
     returnType = "V",
     parameters = listOf("Landroid/os/Bundle;"),
-)
-
-internal object SpeedStepFingerprint : Fingerprint(
-    definingClass = EXTENSION_CLASS,
-    name = "getSpeedStep",
-    returnType = "I",
-    parameters = listOf(),
 )

@@ -1,10 +1,14 @@
 package app.keyboardspeed.extension;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.graphics.Rect;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
@@ -34,6 +38,11 @@ public final class KeyboardCommentsPatch {
      */
     private static final long PANEL_OPEN_CHECK_DELAY_MS = 500;
 
+    /**
+     * A panel shown on screen is at least as tall as its header.
+     */
+    private static final int MINIMUM_PANEL_HEIGHT_DP = 48;
+
     private static final Handler handler = new Handler(Looper.getMainLooper());
 
     private KeyboardCommentsPatch() {
@@ -62,7 +71,10 @@ public final class KeyboardCommentsPatch {
     }
 
     private static void toggleComments(Activity activity) {
-        if (Boolean.TRUE.equals(Morphe.isPanelOpen(COMMENTS_PANEL_IDS))) {
+        // Morphe does not record every closing of a panel, so it can still list the comments as open
+        // after they were closed. Back would then minimize the video instead, so back is only used
+        // if a panel is also shown on screen. Showing the comments again while they are open does nothing.
+        if (!Boolean.FALSE.equals(Morphe.isPanelOpen(COMMENTS_PANEL_IDS)) && isPanelOnScreen(activity)) {
             // Back closes the panel, the same as the back button.
             activity.onBackPressed();
             return;
@@ -82,6 +94,31 @@ public final class KeyboardCommentsPatch {
                 showPanel(COMMENTS_PANEL_IDS.get(1));
             }
         }, PANEL_OPEN_CHECK_DELAY_MS);
+    }
+
+    /**
+     * @return If the engagement panel container of the activity shows a panel on screen.
+     *         False if the container is not found, so back is never sent without a shown panel.
+     */
+    @SuppressLint("DiscouragedApi")
+    private static boolean isPanelOnScreen(Activity activity) {
+        int id = activity.getResources().getIdentifier("app_engagement_panel", "id", activity.getPackageName());
+        View container = id == 0 ? null : activity.findViewById(id);
+        if (!(container instanceof ViewGroup group) || !group.isShown()) {
+            return false;
+        }
+
+        // The container can be shown while its panels are hidden or slid off screen.
+        final float minimumHeight = MINIMUM_PANEL_HEIGHT_DP * activity.getResources().getDisplayMetrics().density;
+        Rect visible = new Rect();
+        for (int i = 0; i < group.getChildCount(); i++) {
+            View panel = group.getChildAt(i);
+            if (panel.isShown() && panel.getGlobalVisibleRect(visible)
+                    && visible.width() > 0 && visible.height() >= minimumHeight) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private static boolean showPanel(String panelId) {

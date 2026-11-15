@@ -35,12 +35,24 @@ public final class KeyboardFrameStepPatch {
     private static final long CONTINUE_STEPS_MS = 1000;
 
     /**
-     * Shortest time between the steps of a held key, so the player keeps up with the seeks.
+     * Time between the steps of a held , key. Each step seeks back, which decodes the video from
+     * the previous keyframe, and faster steps cancel each other before the frame is shown.
      */
-    private static final long MINIMUM_REPEAT_MS = 40;
+    private static final long BACKWARD_REPEAT_MS = 250;
+
+    /**
+     * Holding . plays the video slowly instead of stepping, as seeking forward keeps reaching video
+     * that is not yet loaded while the video is paused, and the frame then freezes.
+     */
+    private static final float FORWARD_HOLD_SPEED = 0.25f;
 
     private static double targetTime = -1;
     private static long lastStepTime;
+
+    /**
+     * Playback speed before holding . started slow playback, or NaN if not playing slowly.
+     */
+    private static float speedBeforeHold = Float.NaN;
 
     private KeyboardFrameStepPatch() {
     }
@@ -74,18 +86,62 @@ public final class KeyboardFrameStepPatch {
             return false;
         }
 
-        if (event.getAction() == KeyEvent.ACTION_DOWN) {
-            final long now = SystemClock.uptimeMillis();
-            if (event.getRepeatCount() == 0 || now - lastStepTime >= MINIMUM_REPEAT_MS) {
+        final long now = SystemClock.uptimeMillis();
+        if (event.getAction() == KeyEvent.ACTION_UP) {
+            stopSlowPlayback(activity);
+        } else if (event.getAction() == KeyEvent.ACTION_DOWN) {
+            if (event.getRepeatCount() == 0) {
+                stopSlowPlayback(activity);
+                step(activity, direction, now);
+            } else if (direction > 0) {
+                startSlowPlayback(activity);
+            } else if (now - lastStepTime >= BACKWARD_REPEAT_MS) {
                 step(activity, direction, now);
             }
         }
         return true;
     }
 
+    /**
+     * Plays the video slowly while . is held, after the first frame step.
+     */
+    private static void startSlowPlayback(Activity activity) {
+        if (!Float.isNaN(speedBeforeHold)) {
+            return; // Already playing slowly.
+        }
+        final float speed = Morphe.getPlaybackSpeed();
+        if (Float.isNaN(speed) || !Morphe.changePlaybackSpeed(FORWARD_HOLD_SPEED)) {
+            return;
+        }
+        speedBeforeHold = speed;
+        sendMediaKey(activity, KeyEvent.KEYCODE_MEDIA_PLAY);
+        log("slow playback from speed " + speed);
+    }
+
+    /**
+     * Pauses the slow playback of a held . and restores the playback speed.
+     */
+    private static void stopSlowPlayback(Activity activity) {
+        if (Float.isNaN(speedBeforeHold)) {
+            return;
+        }
+        sendMediaKey(activity, KeyEvent.KEYCODE_MEDIA_PAUSE);
+        Morphe.changePlaybackSpeed(speedBeforeHold);
+        speedBeforeHold = Float.NaN;
+        // The video moved while playing, so the next step starts from the time of the player.
+        targetTime = -1;
+        log("slow playback stopped at " + Morphe.getVideoTime());
+    }
+
+    private static void log(String message) {
+        if (Log.isLoggable(TAG, Log.DEBUG)) {
+            Log.d(TAG, message);
+        }
+    }
+
     private static void step(Activity activity, int direction, long now) {
         if (!"PAUSED".equals(Morphe.getVideoState())) {
-            pause(activity);
+            sendMediaKey(activity, KeyEvent.KEYCODE_MEDIA_PAUSE);
         }
 
         if (targetTime < 0 || now - lastStepTime > CONTINUE_STEPS_MS) {
@@ -98,6 +154,8 @@ public final class KeyboardFrameStepPatch {
 
         targetTime = Math.max(0, targetTime + direction * 1000.0 / frameRate());
         lastStepTime = now;
+        log("step " + direction + " to " + Math.round(targetTime)
+                + " player time " + Morphe.getVideoTime() + " state " + Morphe.getVideoState());
         if (!Morphe.seekTo(Math.round(targetTime))) {
             // Such as at the end of the video, or while the video is loading.
             targetTime = -1;
@@ -121,15 +179,16 @@ public final class KeyboardFrameStepPatch {
     }
 
     /**
-     * Pauses the video the same as the pause key of a keyboard or headset, which does nothing if already paused.
+     * Pauses or plays the video the same as the media keys of a keyboard or headset.
+     * Pause does nothing if already paused, and play does nothing if already playing.
      */
-    private static void pause(Activity activity) {
+    private static void sendMediaKey(Activity activity, int keyCode) {
         try {
             AudioManager audioManager = (AudioManager) activity.getSystemService(Context.AUDIO_SERVICE);
-            audioManager.dispatchMediaKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_MEDIA_PAUSE));
-            audioManager.dispatchMediaKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_MEDIA_PAUSE));
+            audioManager.dispatchMediaKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, keyCode));
+            audioManager.dispatchMediaKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, keyCode));
         } catch (Exception ex) {
-            Log.e(TAG, "pause failure", ex);
+            Log.e(TAG, "sendMediaKey failure", ex);
         }
     }
 }

@@ -58,6 +58,39 @@ final class Morphe {
     private static final Lookup PANELS_OPEN = new Lookup("shared.EngagementPanel", "checkIdsInQueue", List.class);
     private static final Lookup LAST_OPENED_PANEL = new Lookup("shared.EngagementPanel", "getLastOpenedPanelId");
     private static final Lookup GET_VIDEO_TIME = new Lookup("patches.VideoInformation", "getVideoTime");
+    private static final Lookup GET_PLAYBACK_SPEED = new Lookup("patches.VideoInformation", "getPlaybackSpeed");
+    private static final Lookup CHANGE_PLAYBACK_SPEED = new Lookup("patches.VideoInformation",
+            "changePlaybackSpeed", float.class);
+
+    /**
+     * @return The playback speed, or NaN if not available.
+     */
+    static float getPlaybackSpeed() {
+        try {
+            Method method = GET_PLAYBACK_SPEED.get();
+            return method == null ? Float.NaN : (float) method.invoke(null);
+        } catch (Exception ex) {
+            Log.e(TAG, "getPlaybackSpeed failure", ex);
+            return Float.NaN;
+        }
+    }
+
+    /**
+     * @return If the playback speed was changed.
+     */
+    static boolean changePlaybackSpeed(float speed) {
+        try {
+            Method method = CHANGE_PLAYBACK_SPEED.get();
+            if (method == null) {
+                return false;
+            }
+            method.invoke(null, speed);
+            return true;
+        } catch (Exception ex) {
+            Log.e(TAG, "changePlaybackSpeed failure", ex);
+            return false;
+        }
+    }
     private static final Lookup SEEK_TO = new Lookup("patches.VideoInformation", "seekTo", long.class);
     private static final Lookup GET_VIDEO_STATE = new Lookup("shared.VideoState", "getCurrent");
     private static final Lookup GET_CURRENT_QUALITY = new Lookup("patches.VideoInformation", "getCurrentQuality");

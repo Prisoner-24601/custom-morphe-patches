@@ -92,7 +92,7 @@ public final class KeyboardCommentsPatch {
     }
 
     /**
-     * The header of an engagement panel (id panel_header) holds the close button of the panel (id close_button).
+     * The header of an engagement panel (id panel_header) is next to the close button of the panel (id close_button).
      * Panels that are closed can stay in the views, hidden or slid off screen, so only a header shown on screen counts.
      *
      * @return The close button of the panel shown on screen, or null if no panel is shown.
@@ -115,8 +115,16 @@ public final class KeyboardCommentsPatch {
             if (!view.getGlobalVisibleRect(visible) || visible.isEmpty()) {
                 return null;
             }
-            View closeButton = view.findViewById(closeId);
-            return closeButton != null && closeButton.isShown() ? closeButton : null;
+            // The close button is next to the header in the header wrapper (panel_header_wrapper), not inside it.
+            View container = view;
+            for (int level = 0; level < 3 && container != null; level++) {
+                View closeButton = container.findViewById(closeId);
+                if (closeButton != null && closeButton.isShown()) {
+                    return closeButton;
+                }
+                container = container.getParent() instanceof View parent ? parent : null;
+            }
+            return null;
         }
         if (view instanceof ViewGroup group) {
             for (int i = 0; i < group.getChildCount(); i++) {

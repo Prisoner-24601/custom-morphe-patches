@@ -47,7 +47,9 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
 ### Keyboard frame step shortcuts
 
 - `,` steps one frame back and `.` one frame forward, like on the YouTube website.
-  Holding a key repeats the step. The video is paused first.
+  The video is paused first.
+- Holding `.` plays the video at 0.25x until the key is released, then pauses again.
+  Holding `,` keeps stepping back, 4 frames a second.
 - The length of a frame comes from the video quality, such as 60 fps for 1080p60, and 30 fps
   if the quality has no frame rate. The **Frame rate** patch option sets a fixed frame rate instead.
 - `<` and `>` (with Shift) keep their default action.

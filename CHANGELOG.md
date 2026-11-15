@@ -1,3 +1,9 @@
+## [1.4.1](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.4.0...v1.4.1) (2026-11-15)
+
+### 🐛 Bug Fixes
+
+* Comments shortcut no longer minimizes the video ([0ede849](https://github.com/Prisoner-24601/custom-morphe-patches/commit/0ede849df72469b89471d550b82d67d601b85862))
+
 ## [1.4.0](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.3.0...v1.4.0) (2026-11-12)
 
 ### ✨ New Features

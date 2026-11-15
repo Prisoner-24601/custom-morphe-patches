@@ -7,6 +7,7 @@ Add-on YouTube patches for use with [Morphe](https://morphe.software):
 - **Keyboard comments shortcut**: the `M` key shows and hides the comments of the video.
 - **Keyboard fullscreen shortcut**: the `F` key enters and exits fullscreen.
 - **Keyboard minimize shortcut**: the `Esc` key minimizes the video to the miniplayer.
+- **Keyboard frame step shortcuts**: the `,` and `.` keys step the video one frame back and forward.
 - **DeArrow original titles**: videos with a DeArrow title show both the DeArrow title and the
   original title, such as `Clear, descriptive title | YOU WON'T BELIEVE WHAT HAPPENED`.
 
@@ -31,7 +32,8 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
 
 ### Keyboard comments, fullscreen and minimize shortcuts
 
-- `M` shows the comments panel of the open video, and closes it when it is open.
+- `M` shows the comments panel of the open video. If a panel is open, such as the comments
+  or the description, `M` closes it with the close button of the panel.
   `F` enters fullscreen, and exits it in fullscreen.
   `Esc` minimizes the video to the miniplayer, also from fullscreen or with the comments open.
 - The key of each is its **Key** patch option: a single letter or digit, `Esc`, `Backspace` or `Tab`.
@@ -41,6 +43,14 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
   The fullscreen shortcut uses Morphe's fullscreen controller when **Exit fullscreen mode**,
   **Open videos fullscreen** or **Open Shorts in regular player** is applied, and otherwise
   taps the fullscreen button of the player.
+
+### Keyboard frame step shortcuts
+
+- `,` steps one frame back and `.` one frame forward, like on the YouTube website.
+  Holding a key repeats the step. The video is paused first.
+- The length of a frame comes from the video quality, such as 60 fps for 1080p60, and 30 fps
+  if the quality has no frame rate. The **Frame rate** patch option sets a fixed frame rate instead.
+- `<` and `>` (with Shift) keep their default action.
 
 ### DeArrow original titles
 

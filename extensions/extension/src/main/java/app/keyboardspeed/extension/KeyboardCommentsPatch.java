@@ -38,11 +38,6 @@ public final class KeyboardCommentsPatch {
      */
     private static final long PANEL_OPEN_CHECK_DELAY_MS = 500;
 
-    /**
-     * A panel shown on screen is at least as tall as its header.
-     */
-    private static final int MINIMUM_PANEL_HEIGHT_DP = 48;
-
     private static final Handler handler = new Handler(Looper.getMainLooper());
 
     private KeyboardCommentsPatch() {
@@ -71,12 +66,12 @@ public final class KeyboardCommentsPatch {
     }
 
     private static void toggleComments(Activity activity) {
-        // Morphe does not record every closing of a panel, so it can still list the comments as open
-        // after they were closed. Back would then minimize the video instead, so back is only used
-        // if a panel is also shown on screen. Showing the comments again while they are open does nothing.
-        if (!Boolean.FALSE.equals(Morphe.isPanelOpen(COMMENTS_PANEL_IDS)) && isPanelOnScreen(activity)) {
-            // Back closes the panel, the same as the back button.
-            activity.onBackPressed();
+        // A panel shown on screen, such as the comments, is closed with the close button of its header,
+        // the same as tapping it. Back is not used, as it minimizes the video if no panel is open.
+        // Morphe's list of open panels is not used either, as it misses some closings of panels.
+        View closeButton = findShownPanelCloseButton(activity);
+        if (closeButton != null) {
+            closeButton.performClick();
             return;
         }
 
@@ -97,28 +92,41 @@ public final class KeyboardCommentsPatch {
     }
 
     /**
-     * @return If the engagement panel container of the activity shows a panel on screen.
-     *         False if the container is not found, so back is never sent without a shown panel.
+     * The header of an engagement panel (id panel_header) holds the close button of the panel (id close_button).
+     * Panels that are closed can stay in the views, hidden or slid off screen, so only a header shown on screen counts.
+     *
+     * @return The close button of the panel shown on screen, or null if no panel is shown.
      */
     @SuppressLint("DiscouragedApi")
-    private static boolean isPanelOnScreen(Activity activity) {
-        int id = activity.getResources().getIdentifier("app_engagement_panel", "id", activity.getPackageName());
-        View container = id == 0 ? null : activity.findViewById(id);
-        if (!(container instanceof ViewGroup group) || !group.isShown()) {
-            return false;
+    private static View findShownPanelCloseButton(Activity activity) {
+        final int headerId = activity.getResources().getIdentifier("panel_header", "id", activity.getPackageName());
+        final int closeId = activity.getResources().getIdentifier("close_button", "id", activity.getPackageName());
+        if (headerId == 0 || closeId == 0) {
+            return null;
         }
+        return findShownCloseButton(activity.getWindow().getDecorView(), headerId, closeId, new Rect());
+    }
 
-        // The container can be shown while its panels are hidden or slid off screen.
-        final float minimumHeight = MINIMUM_PANEL_HEIGHT_DP * activity.getResources().getDisplayMetrics().density;
-        Rect visible = new Rect();
-        for (int i = 0; i < group.getChildCount(); i++) {
-            View panel = group.getChildAt(i);
-            if (panel.isShown() && panel.getGlobalVisibleRect(visible)
-                    && visible.width() > 0 && visible.height() >= minimumHeight) {
-                return true;
+    private static View findShownCloseButton(View view, int headerId, int closeId, Rect visible) {
+        if (!view.isShown()) {
+            return null;
+        }
+        if (view.getId() == headerId) {
+            if (!view.getGlobalVisibleRect(visible) || visible.isEmpty()) {
+                return null;
+            }
+            View closeButton = view.findViewById(closeId);
+            return closeButton != null && closeButton.isShown() ? closeButton : null;
+        }
+        if (view instanceof ViewGroup group) {
+            for (int i = 0; i < group.getChildCount(); i++) {
+                View found = findShownCloseButton(group.getChildAt(i), headerId, closeId, visible);
+                if (found != null) {
+                    return found;
+                }
             }
         }
-        return false;
+        return null;
     }
 
     private static boolean showPanel(String panelId) {

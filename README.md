@@ -10,6 +10,8 @@ Add-on YouTube patches for use with [Morphe](https://morphe.software):
 - **Keyboard frame step shortcuts**: the `,` and `.` keys step the video one frame back and forward.
 - **DeArrow original titles**: videos with a DeArrow title show both the DeArrow title and the
   original title, such as `Clear, descriptive title | YOU WON'T BELIEVE WHAT HAPPENED`.
+- **Wide screen feed grid**: the home feed stays a grid of videos on wide screens, such as an
+  external monitor, instead of one giant video at a time.
 
 This bundle is an add-on. Its patches work through the official Morphe YouTube patches, so
 apply it **together with** the official "Morphe Patches" source, never on its own.
@@ -70,6 +72,14 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
 - How it works: after all patches are executed, it changes the DeArrow code of the Morphe YouTube
   patches, so the original title is always fetched for videos with a DeArrow title
   (`DeArrowTitle.needsOriginalTitle`) and is combined with the DeArrow title (`DeArrowTitle.titleFor`).
+
+### Wide screen feed grid
+
+- YouTube lays out the feeds with grid layouts that its server sends for screens up to a certain
+  size. On a larger screen, such as a monitor through a USB-C dock or in a desktop mode, YouTube
+  falls back to a single column, which shows one video across the whole screen.
+- This patch uses the grid layout for the width of the screen instead, or else the widest layout.
+- Screens that fit a layout of YouTube, such as phones and tablets, are not changed.
 
 ## 🩹 Patches list
 

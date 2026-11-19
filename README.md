@@ -96,7 +96,7 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.6.0](https://github.com/Prisoner-24601/custom-morphe-patches/releases/tag/v1.6.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;7 patches total
+> **[v1.7.0](https://github.com/Prisoner-24601/custom-morphe-patches/releases/tag/v1.7.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;7 patches total
 <details open>
 <summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;7 patches</summary>
 <br>
@@ -109,7 +109,7 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
 | [Keyboard fullscreen shortcut](#keyboard-fullscreen-shortcut) | Makes a key of a hardware keyboard (F by default) enter and exit fullscreen while a video is open. | • Key |
 | [Keyboard minimize shortcut](#keyboard-minimize-shortcut) | Makes a key of a hardware keyboard (Esc by default) minimize the open video to the miniplayer, also from fullscreen or with the comments open. | • Key |
 | [Keyboard speed shortcuts](#keyboard-speed-shortcuts) | Makes the - and = keys of a hardware keyboard decrease and increase the playback speed. Apply together with the Morphe YouTube patches, which this patch uses to change the speed. | • Speed step |
-| [Wide screen feed grid](#wide-screen-feed-grid) | Shows the home feed and other feeds as a grid on screens that are wider than the grid layouts of YouTube, such as an external monitor, instead of one giant video at a time. |  |
+| [Wide screen feed grid](#wide-screen-feed-grid) | Shows the home feed and other feeds as a grid of videos on a monitor, such as with Samsung DeX or a USB-C dock, instead of one giant video at a time. The tablet layout is used while the app is on a monitor, and the phone layout on the screen of the phone. | • Restart when moved to a monitor |
 
 </details>
 

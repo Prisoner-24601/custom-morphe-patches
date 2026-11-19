@@ -80,6 +80,10 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
   falls back to a single column, which shows one video across the whole screen.
 - This patch uses the grid layout for the width of the screen instead, or else the widest layout.
 - Screens that fit a layout of YouTube, such as phones and tablets, are not changed.
+- On a phone, YouTube's server sends the feeds as a list with one video per row, also in landscape
+  and on a monitor in a desktop mode such as Samsung DeX. Set Settings → Morphe → General →
+  **Device layout** to **Tablet** to get the grid of the server: 2 or more videos per row in
+  landscape and on a monitor. In portrait, the feed still has one video per row.
 
 ## 🩹 Patches list
 

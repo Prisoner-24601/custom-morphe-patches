@@ -1,3 +1,9 @@
+## [1.6.0](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.5.2...v1.6.0) (2026-11-19)
+
+### ✨ New Features
+
+* Add wide screen feed grid patch ([2828eb8](https://github.com/Prisoner-24601/custom-morphe-patches/commit/2828eb8732bc5b30059a317ef2f062f0f24aca3f))
+
 ## [1.5.2](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.5.1...v1.5.2) (2026-11-18)
 
 ### 🐛 Bug Fixes

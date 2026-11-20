@@ -12,8 +12,8 @@ Add-on YouTube patches for use with [Morphe](https://morphe.software):
   original title, such as `Clear, descriptive title | YOU WON'T BELIEVE WHAT HAPPENED`.
 - **Comments menu item**: the menu of a video in a feed or list, such as the Home feed, the watch
   history and playlists, has a Comments item that opens the comments without playing the video.
-- **Monitor caption size**: captions are smaller on a monitor, such as with Samsung DeX or a USB-C
-  dock, and at their usual size on the phone, without changing the caption size of Android.
+- **Monitor caption size**: one caption size on the phone and another on a monitor, such as with
+  Samsung DeX or a USB-C dock, without changing any setting when docking.
 
 This bundle is an add-on. Its patches work through the official Morphe YouTube patches, so
 apply it **together with** the official "Morphe Patches" source, never on its own.
@@ -90,16 +90,13 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
 ### Monitor caption size
 
 - The captions of YouTube grow with the size of the player, so on a monitor they are much larger than
-  on the phone. With this patch, set the caption size of Android for the phone and leave it: while
-  YouTube is on a monitor, its captions are shown at a part of that size, and on the phone at their
-  usual size.
-- The size on a monitor is the **Caption size on a monitor** patch option, in percent of the size on
-  the phone: 50% to 90%, 75% by default. It works the same as the caption size setting of Morphe,
-  only on a monitor: with Android on Normal and Morphe on 100%, 75% on a monitor is the same as
-  setting the caption size of Morphe to 75% while on the monitor.
+  on the phone. This patch uses one caption size on the phone and another on a monitor.
+- The sizes are the **Caption size on the phone** (100% by default) and **Caption size on a monitor**
+  (75% by default) patch options. They are percentages like the caption size setting of Morphe, which
+  the patch replaces: the Morphe setting no longer changes the size, whatever it is set to.
+- The caption size of Android still applies to both, so leave it on one size, such as Normal.
 - The screen is checked each time a caption is shown, so the size follows YouTube between the phone
   and the monitor without a restart.
-- The caption size setting of Morphe still applies, on both screens.
 - A monitor is a screen of at least 600 dp in both directions or the desktop of Samsung DeX, so a
   tablet also counts as a monitor.
 

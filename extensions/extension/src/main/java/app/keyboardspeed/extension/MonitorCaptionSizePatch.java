@@ -8,8 +8,12 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 /**
- * Shows the captions smaller while the app is on a monitor, such as with Samsung DeX or a USB-C dock.
- * The captions of the app grow with the size of the player, so on a monitor they are much larger than on a phone.
+ * Sets the caption size by the screen the app is on: one size on the phone, another on a monitor,
+ * such as with Samsung DeX or a USB-C dock. The captions of the app grow with the size of the player,
+ * so on a monitor they are much larger than on a phone.
+ * <p>
+ * The sizes are percentages of the caption size of the app, like the caption size setting of Morphe, which this
+ * replaces: the scale of the Morphe setting is divided out, so the sizes of the patch options are the sizes shown.
  * The screen is checked each time a caption is laid out, so the size follows the app between the phone and
  * the monitor without a restart.
  */
@@ -29,9 +33,20 @@ public final class MonitorCaptionSizePatch {
     private static int desktopModeEnabledValue;
     private static boolean lookedUpDesktopMode;
 
-    private static Boolean lastLoggedMonitor;
+    private static Object morpheCaptionScaleSetting;
+    private static Method morpheClampToRange;
+    private static boolean lookedUpMorpheScale;
+
+    private static String lastLogged;
 
     private MonitorCaptionSizePatch() {
+    }
+
+    /**
+     * Patch option 'Caption size on the phone', in percent. The body is replaced at patch time.
+     */
+    private static int getPhoneCaptionSize() {
+        return 100;
     }
 
     /**
@@ -42,20 +57,56 @@ public final class MonitorCaptionSizePatch {
     }
 
     /**
+     * If the caption size setting of Morphe scales the same font size. The body is replaced at patch time.
+     */
+    private static boolean isMorpheCaptionScaleApplied() {
+        return false;
+    }
+
+    /**
      * Injection point. Called with the font size of the captions.
      */
     public static float scaleFontSize(float size) {
         try {
             final boolean monitor = isOnMonitor();
-            if (lastLoggedMonitor == null || lastLoggedMonitor != monitor) {
-                lastLoggedMonitor = monitor;
-                Log.i(TAG, monitor ? "On a monitor, captions at " + getMonitorCaptionSize() + "%"
-                        : "On the phone, captions at their usual size");
+            final int percent = monitor ? getMonitorCaptionSize() : getPhoneCaptionSize();
+            final int morphePercent = isMorpheCaptionScaleApplied() ? getMorpheCaptionScale() : 100;
+
+            String state = (monitor ? "monitor" : "phone") + " " + percent + "% (Morphe " + morphePercent + "%)";
+            if (!state.equals(lastLogged)) {
+                lastLogged = state;
+                Log.i(TAG, "Captions on the " + state);
             }
-            return monitor ? size * getMonitorCaptionSize() / 100f : size;
+            return size * percent / Math.max(morphePercent, 1);
         } catch (Exception ex) {
             Log.e(TAG, "scaleFontSize failure", ex);
             return size;
+        }
+    }
+
+    /**
+     * @return The caption size setting of Morphe in percent, as Morphe applies it, or 100 if not found.
+     */
+    private static int getMorpheCaptionScale() {
+        if (!lookedUpMorpheScale) {
+            lookedUpMorpheScale = true;
+            try {
+                ClassLoader loader = MonitorCaptionSizePatch.class.getClassLoader();
+                Field field = Class.forName("app.morphe.extension.youtube.settings.Settings", true, loader)
+                        .getField("CAPTION_SCALE");
+                morpheCaptionScaleSetting = field.get(null);
+                morpheClampToRange = Class.forName(
+                        "app.morphe.extension.shared.settings.preference.SeekBarPreference", true, loader)
+                        .getMethod("clampToRange", field.getType());
+            } catch (Exception ex) {
+                Log.w(TAG, "Morphe caption size setting not found", ex);
+                morpheClampToRange = null;
+            }
+        }
+        try {
+            return morpheClampToRange == null ? 100 : (int) morpheClampToRange.invoke(null, morpheCaptionScaleSetting);
+        } catch (Exception ex) {
+            return 100;
         }
     }
 

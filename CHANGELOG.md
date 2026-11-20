@@ -1,3 +1,9 @@
+## [1.7.1](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.7.0...v1.7.1) (2026-11-20)
+
+### 🐛 Bug Fixes
+
+* Revert the monitor changes of the wide screen feed grid patch ([d08c54d](https://github.com/Prisoner-24601/custom-morphe-patches/commit/d08c54dca226962bc9259f8525ff8d28f05692a5))
+
 ## [1.7.0](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.6.0...v1.7.0) (2026-11-19)
 
 ### ✨ New Features

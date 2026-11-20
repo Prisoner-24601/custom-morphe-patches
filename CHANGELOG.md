@@ -1,3 +1,9 @@
+## [1.7.2](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.7.1...v1.7.2) (2026-11-20)
+
+### 🐛 Bug Fixes
+
+* Remove the wide screen feed grid patch ([1240a51](https://github.com/Prisoner-24601/custom-morphe-patches/commit/1240a5112fbc0e871186dd1f2774ebd83b8527b1))
+
 ## [1.7.1](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.7.0...v1.7.1) (2026-11-20)
 
 ### 🐛 Bug Fixes

@@ -1,3 +1,9 @@
+## [1.9.1](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.9.0...v1.9.1) (2026-11-20)
+
+### 🐛 Bug Fixes
+
+* Monitor caption size defaults to 75% ([34b3da1](https://github.com/Prisoner-24601/custom-morphe-patches/commit/34b3da1f06522a23a22ef525f960ceafc22018c8))
+
 ## [1.9.0](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.8.0...v1.9.0) (2026-11-20)
 
 ### ✨ New Features

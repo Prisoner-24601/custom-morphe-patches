@@ -10,8 +10,8 @@ Add-on YouTube patches for use with [Morphe](https://morphe.software):
 - **Keyboard frame step shortcuts**: the `,` and `.` keys step the video one frame back and forward.
 - **DeArrow original titles**: videos with a DeArrow title show both the DeArrow title and the
   original title, such as `Clear, descriptive title | YOU WON'T BELIEVE WHAT HAPPENED`.
-- **Wide screen feed grid**: the home feed is a grid of videos on a monitor, such as with Samsung DeX
-  or a USB-C dock, instead of one giant video at a time.
+- **Wide screen feed grid**: the home feed stays a grid of videos on wide screens, such as an
+  external monitor, instead of one giant video at a time.
 
 This bundle is an add-on. Its patches work through the official Morphe YouTube patches, so
 apply it **together with** the official "Morphe Patches" source, never on its own.
@@ -75,23 +75,15 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
 
 ### Wide screen feed grid
 
-- On a monitor, such as with Samsung DeX or a USB-C dock, the home feed shows a grid of videos, and
-  on the screen of the phone the usual phone layout. This works with **Device layout** (Settings →
-  Morphe → General) set to **Default**; Phone and Tablet still force that layout.
-- Why YouTube showed one giant video at a time on a monitor, only sometimes: YouTube saves the
-  configuration that its server sends, and the server sends a different configuration for a phone
-  and for a tablet. Started on a monitor with the saved configuration of a phone, the home feed shows
-  one video per row across the whole width. So it depended on where YouTube was used last.
-- What the patch does:
-  - When YouTube starts on another kind of screen than the last time (phone or monitor), the saved
-    configuration is removed, so YouTube gets the configuration for the screen it's on.
-  - On a monitor, YouTube tells the server it's a tablet. YouTube can decide by the built-in screen
-    only, so it stayed a phone on a monitor.
-  - **Restart when moved to a monitor** (patch option, on by default): a running YouTube moved from
-    the phone to a monitor keeps the configuration of the phone, so it restarts once.
-  - On a screen larger than all layouts of the server, YouTube falls back to a single column. The
-    patch uses the layout for the width of the screen instead.
-- The landscape layout of the phone is not changed.
+- YouTube lays out the feeds with grid layouts that its server sends for screens up to a certain
+  size. On a larger screen, such as a monitor through a USB-C dock or in a desktop mode, YouTube
+  falls back to a single column, which shows one video across the whole screen.
+- This patch uses the grid layout for the width of the screen instead, or else the widest layout.
+- Screens that fit a layout of YouTube, such as phones and tablets, are not changed.
+- On a phone, YouTube's server sends the feeds as a list with one video per row, also in landscape
+  and on a monitor in a desktop mode such as Samsung DeX. Set Settings → Morphe → General →
+  **Device layout** to **Tablet** to get the grid of the server: 2 or more videos per row in
+  landscape and on a monitor. In portrait, the feed still has one video per row.
 
 ## 🩹 Patches list
 

@@ -10,8 +10,6 @@ Add-on YouTube patches for use with [Morphe](https://morphe.software):
 - **Keyboard frame step shortcuts**: the `,` and `.` keys step the video one frame back and forward.
 - **DeArrow original titles**: videos with a DeArrow title show both the DeArrow title and the
   original title, such as `Clear, descriptive title | YOU WON'T BELIEVE WHAT HAPPENED`.
-- **Wide screen feed grid**: the home feed stays a grid of videos on wide screens, such as an
-  external monitor, instead of one giant video at a time.
 
 This bundle is an add-on. Its patches work through the official Morphe YouTube patches, so
 apply it **together with** the official "Morphe Patches" source, never on its own.
@@ -73,17 +71,14 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
   patches, so the original title is always fetched for videos with a DeArrow title
   (`DeArrowTitle.needsOriginalTitle`) and is combined with the DeArrow title (`DeArrowTitle.titleFor`).
 
-### Wide screen feed grid
+### Tip: one giant video at a time on a monitor
 
-- YouTube lays out the feeds with grid layouts that its server sends for screens up to a certain
-  size. On a larger screen, such as a monitor through a USB-C dock or in a desktop mode, YouTube
-  falls back to a single column, which shows one video across the whole screen.
-- This patch uses the grid layout for the width of the screen instead, or else the widest layout.
-- Screens that fit a layout of YouTube, such as phones and tablets, are not changed.
-- On a phone, YouTube's server sends the feeds as a list with one video per row, also in landscape
-  and on a monitor in a desktop mode such as Samsung DeX. Set Settings → Morphe → General →
-  **Device layout** to **Tablet** to get the grid of the server: 2 or more videos per row in
-  landscape and on a monitor. In portrait, the feed still has one video per row.
+- On a monitor, such as with Samsung DeX or a USB-C dock, YouTube normally shows the home feed as
+  a grid of videos. If it often shows one giant video at a time instead, check for a VPN.
+- YouTube gets its layout from its server, and through a VPN the server can send another layout,
+  or send it too late, so YouTube keeps the layout of a phone.
+- Excluding YouTube from the VPN fixes it: use the split tunneling (app exclusion) setting of the
+  VPN app. The rest of the phone still uses the VPN.
 
 ## 🩹 Patches list
 

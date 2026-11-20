@@ -1,3 +1,9 @@
+## [1.10.0](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.9.1...v1.10.0) (2026-11-20)
+
+### ✨ New Features
+
+* Monitor caption size sets the phone size too, and replaces the Morphe caption size ([b027c6f](https://github.com/Prisoner-24601/custom-morphe-patches/commit/b027c6f54dade7ea4aaac504a32f40c26862e0dd))
+
 ## [1.9.1](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.9.0...v1.9.1) (2026-11-20)
 
 ### 🐛 Bug Fixes

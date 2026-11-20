@@ -1,3 +1,9 @@
+## [1.9.0](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.8.0...v1.9.0) (2026-11-20)
+
+### ✨ New Features
+
+* Add monitor caption size patch ([6b2d52c](https://github.com/Prisoner-24601/custom-morphe-patches/commit/6b2d52c204b4c0de26a5a264a2c3ad2a480bb005))
+
 ## [1.8.0](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.7.2...v1.8.0) (2026-11-20)
 
 ### ✨ New Features

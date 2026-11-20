@@ -116,9 +116,9 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.8.0](https://github.com/Prisoner-24601/custom-morphe-patches/releases/tag/v1.8.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;7 patches total
+> **[v1.9.0](https://github.com/Prisoner-24601/custom-morphe-patches/releases/tag/v1.9.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;8 patches total
 <details open>
-<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;7 patches</summary>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;8 patches</summary>
 <br>
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -130,6 +130,7 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
 | [Keyboard fullscreen shortcut](#keyboard-fullscreen-shortcut) | Makes a key of a hardware keyboard (F by default) enter and exit fullscreen while a video is open. | • Key |
 | [Keyboard minimize shortcut](#keyboard-minimize-shortcut) | Makes a key of a hardware keyboard (Esc by default) minimize the open video to the miniplayer, also from fullscreen or with the comments open. | • Key |
 | [Keyboard speed shortcuts](#keyboard-speed-shortcuts) | Makes the - and = keys of a hardware keyboard decrease and increase the playback speed. Apply together with the Morphe YouTube patches, which this patch uses to change the speed. | • Speed step |
+| [Monitor caption size](#monitor-caption-size) | Shows the captions smaller while the app is on a monitor, such as with Samsung DeX or a USB-C dock, and at their usual size on the screen of the phone. | • Caption size on a monitor |
 
 </details>
 

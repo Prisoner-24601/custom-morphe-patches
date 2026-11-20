@@ -10,6 +10,8 @@ Add-on YouTube patches for use with [Morphe](https://morphe.software):
 - **Keyboard frame step shortcuts**: the `,` and `.` keys step the video one frame back and forward.
 - **DeArrow original titles**: videos with a DeArrow title show both the DeArrow title and the
   original title, such as `Clear, descriptive title | YOU WON'T BELIEVE WHAT HAPPENED`.
+- **Comments menu item**: the menu of a video in a feed or list, such as the Home feed, the watch
+  history and playlists, has a Comments item that opens the comments without playing the video.
 
 This bundle is an add-on. Its patches work through the official Morphe YouTube patches, so
 apply it **together with** the official "Morphe Patches" source, never on its own.
@@ -70,6 +72,18 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
 - How it works: after all patches are executed, it changes the DeArrow code of the Morphe YouTube
   patches, so the original title is always fetched for videos with a DeArrow title
   (`DeArrowTitle.needsOriginalTitle`) and is combined with the DeArrow title (`DeArrowTitle.titleFor`).
+
+### Comments menu item
+
+- The ⋮ menu (or tap and hold menu) of a video in a feed or list has a **Comments** item, as the first
+  of the Morphe items. It opens the comments panel of the video over the page, without playing the
+  video. Replies open in the panel as usual.
+- Works in the lists that show the Morphe items in the menus of videos, such as the Home feed,
+  subscriptions, search results, channel pages, playlists and the watch history.
+- If the video has no comments, such as when they are turned off, a message says so.
+- Needs the official Morphe Patches source with one of its patches that add items to the menus of
+  videos, such as **Save to Watch later button** or **Ask flyout menu**. The comments panel is
+  requested the same way as by the comment button of Morphe's **Cards with action buttons** layout.
 
 ### Tip: one giant video at a time on a monitor
 

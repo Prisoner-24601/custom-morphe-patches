@@ -1,3 +1,9 @@
+## [1.8.0](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.7.2...v1.8.0) (2026-11-20)
+
+### ✨ New Features
+
+* Add comments menu item patch ([21c936e](https://github.com/Prisoner-24601/custom-morphe-patches/commit/21c936e2e7af08ed94d46ed1da0e776d15a98f9f))
+
 ## [1.7.2](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.7.1...v1.7.2) (2026-11-20)
 
 ### 🐛 Bug Fixes

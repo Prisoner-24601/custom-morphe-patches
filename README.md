@@ -97,13 +97,14 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.7.2](https://github.com/Prisoner-24601/custom-morphe-patches/releases/tag/v1.7.2)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;6 patches total
+> **[v1.8.0](https://github.com/Prisoner-24601/custom-morphe-patches/releases/tag/v1.8.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;7 patches total
 <details open>
-<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;6 patches</summary>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;7 patches</summary>
 <br>
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
+| [Comments menu item](#comments-menu-item) | Adds a Comments item to the menu of videos in feeds and lists, such as the Home feed, the watch history and playlists, which opens the comments of the video without playing it. Apply together with the Morphe YouTube patches. |  |
 | [DeArrow original titles](#dearrow-original-titles) | Shows both the DeArrow title and the original title, instead of only the DeArrow title. Apply together with the Morphe YouTube patches, and turn on DeArrow titles in the Morphe settings. | • Separator<br>• Title order |
 | [Keyboard comments shortcut](#keyboard-comments-shortcut) | Makes a key of a hardware keyboard (M by default) show and hide the comments of the video. Apply together with the Morphe YouTube patches 2.2 or newer, which this patch uses to show the comments. | • Key |
 | [Keyboard frame step shortcuts](#keyboard-frame-step-shortcuts) | Makes the , and . keys of a hardware keyboard pause the video and step one frame back and forward, like on the YouTube website. Holding a key repeats the step. | • Frame rate |

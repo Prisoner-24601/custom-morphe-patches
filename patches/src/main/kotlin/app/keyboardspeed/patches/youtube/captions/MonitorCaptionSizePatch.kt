@@ -37,17 +37,18 @@ val monitorCaptionSizePatch = bytecodePatch(
 
     val captionSize by intOption(
         key = "monitorCaptionSize",
-        default = 67,
+        default = 75,
         values = mapOf(
-            "40%" to 40,
-            "50% (Android set to Normal, Small on the monitor)" to 50,
+            "50%" to 50,
             "60%" to 60,
-            "67% (Android set to Large, Normal on the monitor)" to 67,
-            "75% (Android set to Very large, Large on the monitor)" to 75,
+            "67%" to 67,
+            "75%" to 75,
             "80%" to 80,
+            "90%" to 90,
         ),
         title = "Caption size on a monitor",
-        description = "Size of the captions on a monitor, in percent of their size on the phone.",
+        description = "Size of the captions on a monitor, in percent of their size on the phone. " +
+            "It's the same as the caption size setting of Morphe, but only on a monitor.",
         required = true,
     ) { it != null && it in 10..200 }
 

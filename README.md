@@ -94,10 +94,9 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
   YouTube is on a monitor, its captions are shown at a part of that size, and on the phone at their
   usual size.
 - The size on a monitor is the **Caption size on a monitor** patch option, in percent of the size on
-  the phone. The caption sizes of Android are Small 0.5×, Normal 1×, Large 1.5× and Very large 2×, so:
-  - 67% (default): Android set to **Large**, captions as **Normal** on the monitor.
-  - 50%: Android set to **Normal**, captions as **Small** on the monitor.
-  - 75%: Android set to **Very large**, captions as **Large** on the monitor.
+  the phone: 50% to 90%, 75% by default. It works the same as the caption size setting of Morphe,
+  only on a monitor: with Android on Normal and Morphe on 100%, 75% on a monitor is the same as
+  setting the caption size of Morphe to 75% while on the monitor.
 - The screen is checked each time a caption is shown, so the size follows YouTube between the phone
   and the monitor without a restart.
 - The caption size setting of Morphe still applies, on both screens.
@@ -107,11 +106,11 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
 ### Tip: one giant video at a time on a monitor
 
 - On a monitor, such as with Samsung DeX or a USB-C dock, YouTube normally shows the home feed as
-  a grid of videos. If it often shows one giant video at a time instead, check for a VPN.
-- YouTube gets its layout from its server, and through a VPN the server can send another layout,
-  or send it too late, so YouTube keeps the layout of a phone.
-- Excluding YouTube from the VPN fixes it: use the split tunneling (app exclusion) setting of the
-  VPN app. The rest of the phone still uses the VPN.
+  a grid of videos, but sometimes shows one giant video at a time instead. The cause is not known yet.
+- Unplugging and plugging the dock in again can fix it.
+- A VPN seemed to make it happen more often: YouTube gets its layout from its server, and through a
+  VPN the server can send another layout, or send it too late. Excluding YouTube from the VPN with
+  the split tunneling (app exclusion) setting of the VPN app helped, but did not fix it for good.
 
 ## 🩹 Patches list
 

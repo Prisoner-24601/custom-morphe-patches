@@ -12,6 +12,8 @@ Add-on YouTube patches for use with [Morphe](https://morphe.software):
   original title, such as `Clear, descriptive title | YOU WON'T BELIEVE WHAT HAPPENED`.
 - **Comments menu item**: the menu of a video in a feed or list, such as the Home feed, the watch
   history and playlists, has a Comments item that opens the comments without playing the video.
+- **Monitor caption size**: captions are smaller on a monitor, such as with Samsung DeX or a USB-C
+  dock, and at their usual size on the phone, without changing the caption size of Android.
 
 This bundle is an add-on. Its patches work through the official Morphe YouTube patches, so
 apply it **together with** the official "Morphe Patches" source, never on its own.
@@ -84,6 +86,23 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
 - Needs the official Morphe Patches source with one of its patches that add items to the menus of
   videos, such as **Save to Watch later button** or **Ask flyout menu**. The comments panel is
   requested the same way as by the comment button of Morphe's **Cards with action buttons** layout.
+
+### Monitor caption size
+
+- The captions of YouTube grow with the size of the player, so on a monitor they are much larger than
+  on the phone. With this patch, set the caption size of Android for the phone and leave it: while
+  YouTube is on a monitor, its captions are shown at a part of that size, and on the phone at their
+  usual size.
+- The size on a monitor is the **Caption size on a monitor** patch option, in percent of the size on
+  the phone. The caption sizes of Android are Small 0.5×, Normal 1×, Large 1.5× and Very large 2×, so:
+  - 67% (default): Android set to **Large**, captions as **Normal** on the monitor.
+  - 50%: Android set to **Normal**, captions as **Small** on the monitor.
+  - 75%: Android set to **Very large**, captions as **Large** on the monitor.
+- The screen is checked each time a caption is shown, so the size follows YouTube between the phone
+  and the monitor without a restart.
+- The caption size setting of Morphe still applies, on both screens.
+- A monitor is a screen of at least 600 dp in both directions or the desktop of Samsung DeX, so a
+  tablet also counts as a monitor.
 
 ### Tip: one giant video at a time on a monitor
 

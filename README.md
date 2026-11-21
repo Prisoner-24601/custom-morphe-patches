@@ -66,12 +66,12 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
 
 ### Keyboard top comments shortcut
 
-- `K` shows the **Top** comments of the open video: it scrolls the comments to the top and presses the Top
-  sort button. If the comments are closed, it opens them first.
-- Made for the **Timed** comments, whose list follows the video, so the sort buttons above it (Top, Timed,
-  Newest) are hard to scroll back to.
-- The Top button is found by its English text, so it only works with the app in English. If the button isn't
-  found, a message says so.
+- `K` shows the **Top** comments of the open video, with the sort buttons (Top, Timed, Newest).
+- Made for the **Timed** comments, which have no sort buttons: they are replaced by a message at the top of
+  the list, and the list follows the video, so the message is hard to scroll back to.
+- If a Top button is shown, `K` presses it. Otherwise it closes the comments and opens them again as new,
+  which shows the Top comments, as when the comments are first opened. If the comments are closed, `K` opens
+  them on Top.
 - The key is its **Key** patch option. Like the other shortcuts, it only works while a video is open.
 
 ### Keyboard SponsorBlock skip shortcut

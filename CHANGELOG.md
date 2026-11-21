@@ -1,3 +1,9 @@
+## [1.13.0](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.12.0...v1.13.0) (2026-11-21)
+
+### ✨ New Features
+
+* Morphe UI size on monitors: Morphe buttons and dialogs follow the screen the app is on ([06d230d](https://github.com/Prisoner-24601/custom-morphe-patches/commit/06d230d0da6f9ef2a45fb39aee4869679ee49191))
+
 ## [1.12.0](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.11.0...v1.12.0) (2026-11-21)
 
 ### ✨ New Features

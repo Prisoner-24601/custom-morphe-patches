@@ -15,6 +15,8 @@ Add-on YouTube and Reddit patches for use with [Morphe](https://morphe.software)
   history and playlists, has a Comments item that opens the comments without playing the video.
 - **Monitor caption size**: one caption size on the phone and another on a monitor, such as with
   Samsung DeX or a USB-C dock, without changing any setting when docking.
+- **Morphe UI size on monitors**: the buttons and dialogs that Morphe adds, such as the search button of the
+  comments, have the right size on a monitor instead of being much too big.
 - **Mouse and arrow key swipes** (Reddit): dragging with a mouse swipes like a finger, such as between
   the images of a post, and the left and right arrow keys move one image at a time.
 
@@ -113,6 +115,14 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
   and the monitor without a restart.
 - A monitor is a screen of at least 600 dp in both directions or the desktop of Samsung DeX, so a
   tablet also counts as a monitor.
+
+### Morphe UI size on monitors
+
+- For YouTube and Reddit. The Morphe patches size their own buttons and dialogs, such as the search button
+  and the search dialog of the comments, for the screen the app first showed them on. After moving the app
+  from the phone to a monitor, such as with Samsung DeX, they stayed sized for the phone, so they were two
+  to three times too big on the monitor.
+- With this patch, these sizes follow the screen the app is on, the same as the rest of the app.
 
 ### Mouse and arrow key swipes
 

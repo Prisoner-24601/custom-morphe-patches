@@ -1,6 +1,6 @@
 # 🧩 Custom Morphe Patches
 
-Add-on YouTube patches for use with [Morphe](https://morphe.software):
+Add-on YouTube and Reddit patches for use with [Morphe](https://morphe.software):
 
 - **Keyboard speed shortcuts**: the `-` and `=` keys of a hardware keyboard decrease and increase
   the playback speed, like `<` and `>` on the YouTube website.
@@ -15,8 +15,10 @@ Add-on YouTube patches for use with [Morphe](https://morphe.software):
   history and playlists, has a Comments item that opens the comments without playing the video.
 - **Monitor caption size**: one caption size on the phone and another on a monitor, such as with
   Samsung DeX or a USB-C dock, without changing any setting when docking.
+- **Mouse and arrow key swipes** (Reddit): dragging with a mouse swipes like a finger, such as between
+  the images of a post, and the left and right arrow keys move one image at a time.
 
-This bundle is an add-on. Its patches work through the official Morphe YouTube patches, so
+This bundle is an add-on. Its patches work through the official Morphe patches, so
 apply it **together with** the official "Morphe Patches" source, never on its own.
 
 ### How to use these patches
@@ -111,6 +113,17 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
   and the monitor without a restart.
 - A monitor is a screen of at least 600 dp in both directions or the desktop of Samsung DeX, so a
   tablet also counts as a monitor.
+
+### Mouse and arrow key swipes
+
+- For Reddit. Reddit ignores dragging with a mouse in its swipeable parts, such as the images of a post with several
+  images, because they are made for fingers. With this patch, dragging with the left mouse button works like
+  a finger, and clicking still works as a tap. A right-click is left alone.
+- The left and right arrow keys swipe once under the mouse pointer: put the pointer on the images of a post
+  and press an arrow key to see the previous or next image, one image per press.
+- Without a mouse pointer on the screen, and while typing (such as a comment), the arrow keys keep their
+  usual action. Holding an arrow key swipes once.
+- Made for Samsung DeX or another mouse and keyboard; on the phone screen it changes nothing.
 
 ### Tip: one giant video at a time on a monitor
 

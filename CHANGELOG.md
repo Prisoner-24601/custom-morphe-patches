@@ -1,3 +1,9 @@
+## [1.14.1](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.14.0...v1.14.1) (2026-11-21)
+
+### 🐛 Bug Fixes
+
+* Keyboard top comments shortcut opens new comments on Top when no Top button is shown ([646e8d8](https://github.com/Prisoner-24601/custom-morphe-patches/commit/646e8d84c9caa9df9984e5f875175dd9c7dcbeed))
+
 ## [1.14.0](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.13.0...v1.14.0) (2026-11-21)
 
 ### ✨ New Features

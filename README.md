@@ -8,6 +8,7 @@ Add-on YouTube patches for use with [Morphe](https://morphe.software):
 - **Keyboard fullscreen shortcut**: the `F` key enters and exits fullscreen.
 - **Keyboard minimize shortcut**: the `Esc` key minimizes the video to the miniplayer.
 - **Keyboard frame step shortcuts**: the `,` and `.` keys step the video one frame back and forward.
+- **Keyboard SponsorBlock skip shortcut**: the `Enter` key presses the SponsorBlock skip button.
 - **DeArrow original titles**: videos with a DeArrow title show both the DeArrow title and the
   original title, such as `Clear, descriptive title | YOU WON'T BELIEVE WHAT HAPPENED`.
 - **Comments menu item**: the menu of a video in a feed or list, such as the Home feed, the watch
@@ -57,6 +58,17 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
 - The length of a frame comes from the video quality, such as 60 fps for 1080p60, and 30 fps
   if the quality has no frame rate. The **Frame rate** patch option sets a fixed frame rate instead.
 - `<` and `>` (with Shift) keep their default action.
+
+### Keyboard SponsorBlock skip shortcut
+
+- `Enter` (or the `Enter` key of the numpad) presses the skip button of SponsorBlock while it is shown,
+  such as **Skip sponsor**. If the **Skip to highlight** button is shown instead, it presses that one.
+- It also works while the skip button is hidden with the player controls (the **Auto hide skip button**
+  setting of Morphe), as long as the video is still in the segment, so the controls don't need to be shown first.
+- Without a skip button, `Enter` keeps its usual action.
+- The key is its **Key** patch option, like the other shortcuts. No Morphe patch uses `Enter`.
+- Needs the **SponsorBlock** patch of the Morphe Patches source, with the skip button shown
+  (segments set to **Show a skip button** in Settings → Morphe → SponsorBlock).
 
 ### DeArrow original titles
 

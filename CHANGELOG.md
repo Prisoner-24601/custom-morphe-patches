@@ -1,3 +1,9 @@
+## [1.11.0](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.10.0...v1.11.0) (2026-11-21)
+
+### ✨ New Features
+
+* Keyboard SponsorBlock skip shortcut: Enter presses the SponsorBlock skip button ([87bd06b](https://github.com/Prisoner-24601/custom-morphe-patches/commit/87bd06b512c989e76978f5bd335092baff8dba4c))
+
 ## [1.10.0](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.9.1...v1.10.0) (2026-11-20)
 
 ### ✨ New Features

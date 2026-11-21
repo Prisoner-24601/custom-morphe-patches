@@ -1,3 +1,9 @@
+## [1.14.0](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.13.0...v1.14.0) (2026-11-21)
+
+### ✨ New Features
+
+* Keyboard top comments shortcut: K shows the Top comments, such as to leave the Timed comments ([77e75d2](https://github.com/Prisoner-24601/custom-morphe-patches/commit/77e75d2379d57e84fe5d836ab4fb5d7b726bd2eb))
+
 ## [1.13.0](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.12.0...v1.13.0) (2026-11-21)
 
 ### ✨ New Features

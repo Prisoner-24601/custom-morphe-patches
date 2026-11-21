@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-11-21T08:35:15",
-  "description": "## [1.13.0](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.12.0...v1.13.0) (2026-11-21)\n\n### ✨ New Features\n\n* Morphe UI size on monitors: Morphe buttons and dialogs follow the screen the app is on ([06d230d](https://github.com/Prisoner-24601/custom-morphe-patches/commit/06d230d0da6f9ef2a45fb39aee4869679ee49191))",
-  "download_url": "https://github.com/Prisoner-24601/custom-morphe-patches/releases/download/v1.13.0/patches-1.13.0.mpp",
+  "created_at": "2026-11-21T10:31:27",
+  "description": "## [1.14.0](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.13.0...v1.14.0) (2026-11-21)\n\n### ✨ New Features\n\n* Keyboard top comments shortcut: K shows the Top comments, such as to leave the Timed comments ([77e75d2](https://github.com/Prisoner-24601/custom-morphe-patches/commit/77e75d2379d57e84fe5d836ab4fb5d7b726bd2eb))",
+  "download_url": "https://github.com/Prisoner-24601/custom-morphe-patches/releases/download/v1.14.0/patches-1.14.0.mpp",
   "signature_download_url": "",
-  "version": "1.13.0"
+  "version": "1.14.0"
 }

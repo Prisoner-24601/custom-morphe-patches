@@ -14,6 +14,8 @@ Add-on YouTube and Reddit patches for use with [Morphe](https://morphe.software)
   original title, such as `Clear, descriptive title | YOU WON'T BELIEVE WHAT HAPPENED`.
 - **Comments menu item**: the menu of a video in a feed or list, such as the Home feed, the watch
   history and playlists, has a Comments item that opens the comments without playing the video.
+- **Remove from watch history menu item**: the menu of a video in a feed or list, such as the Home feed, has a
+  Remove from watch history item.
 - **Monitor caption size**: one caption size on the phone and another on a monitor, such as with
   Samsung DeX or a USB-C dock, without changing any setting when docking.
 - **Morphe UI size on monitors**: the buttons and dialogs that Morphe adds, such as the search button of the
@@ -113,6 +115,16 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
 - Needs the official Morphe Patches source with one of its patches that add items to the menus of
   videos, such as **Save to Watch later button** or **Ask flyout menu**. The comments panel is
   requested the same way as by the comment button of Morphe's **Cards with action buttons** layout.
+
+### Remove from watch history menu item
+
+- The ⋮ menu (or tap and hold menu) of a video in a feed or list has a **Remove from watch history** item,
+  with the Morphe items. It removes the video from the watch history of the account, the same as the item
+  of the watch history page, and a message says if it worked.
+- The video is looked up in the most recent pages of the watch history (a few hundred videos). A video watched
+  longer ago is not found, and a message says so: remove it from the watch history page instead.
+- Needs a signed-in account, and the official Morphe Patches source with one of its patches that add items to
+  the menus of videos, such as **Save to Watch later button**.
 
 ### Monitor caption size
 

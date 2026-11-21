@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-11-21T10:42:01",
-  "description": "## [1.14.1](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.14.0...v1.14.1) (2026-11-21)\n\n### 🐛 Bug Fixes\n\n* Keyboard top comments shortcut opens new comments on Top when no Top button is shown ([646e8d8](https://github.com/Prisoner-24601/custom-morphe-patches/commit/646e8d84c9caa9df9984e5f875175dd9c7dcbeed))",
-  "download_url": "https://github.com/Prisoner-24601/custom-morphe-patches/releases/download/v1.14.1/patches-1.14.1.mpp",
+  "created_at": "2026-11-21T11:01:46",
+  "description": "## [1.15.0](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.14.1...v1.15.0) (2026-11-21)\n\n### ✨ New Features\n\n* Remove from watch history menu item for videos in feeds and lists ([46f765f](https://github.com/Prisoner-24601/custom-morphe-patches/commit/46f765fcbed8852de5137b9cd2879f3dda6d7eb4))",
+  "download_url": "https://github.com/Prisoner-24601/custom-morphe-patches/releases/download/v1.15.0/patches-1.15.0.mpp",
   "signature_download_url": "",
-  "version": "1.14.1"
+  "version": "1.15.0"
 }

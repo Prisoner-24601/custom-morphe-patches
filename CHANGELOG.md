@@ -1,3 +1,9 @@
+## [1.15.0](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.14.1...v1.15.0) (2026-11-21)
+
+### ✨ New Features
+
+* Remove from watch history menu item for videos in feeds and lists ([46f765f](https://github.com/Prisoner-24601/custom-morphe-patches/commit/46f765fcbed8852de5137b9cd2879f3dda6d7eb4))
+
 ## [1.14.1](https://github.com/Prisoner-24601/custom-morphe-patches/compare/v1.14.0...v1.14.1) (2026-11-21)
 
 ### 🐛 Bug Fixes

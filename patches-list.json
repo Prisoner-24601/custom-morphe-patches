@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.14.1",
+  "version": "1.15.0",
   "patches": [
     {
       "name": "Comments menu item",
@@ -500,6 +500,33 @@
           "description": null,
           "apkFileType": "APKM",
           "appIconColor": "#FF4500",
+          "signatures": null,
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove from watch history menu item",
+      "description": "Adds a 'Remove from watch history' item to the menu of videos in feeds and lists, such as the Home feed, which removes the video from the watch history of the account. Apply together with the Morphe YouTube patches.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.youtube",
+          "name": "YouTube",
+          "description": null,
+          "apkFileType": "APK_REQUIRED",
+          "appIconColor": "#FF0033",
           "signatures": null,
           "formFactor": "MOBILE",
           "targets": [

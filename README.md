@@ -170,9 +170,9 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.14.1](https://github.com/Prisoner-24601/custom-morphe-patches/releases/tag/v1.14.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;13 patches total
+> **[v1.15.0](https://github.com/Prisoner-24601/custom-morphe-patches/releases/tag/v1.15.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;14 patches total
 <details open>
-<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;11 patches</summary>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;12 patches</summary>
 <br>
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -188,6 +188,7 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
 | [Keyboard top comments shortcut](#keyboard-top-comments-shortcut) | Makes a key of a hardware keyboard (K by default) show the Top comments of the video, such as to leave the Timed comments, whose sort buttons are hard to get back to. Apply together with the Morphe YouTube patches 2.2 or newer. | • Key |
 | [Monitor caption size](#monitor-caption-size) | Sets the caption size by the screen the app is on: one size on the screen of the phone, another on a monitor, such as with Samsung DeX or a USB-C dock. Replaces the caption size setting of Morphe. | • Caption size on the phone<br>• Caption size on a monitor |
 | [Morphe UI size on monitors](#morphe-ui-size-on-monitors) | Fixes the size of the buttons and dialogs that the Morphe patches add, such as the search button of the comments, on a monitor such as with Samsung DeX, where they are otherwise much too big. |  |
+| [Remove from watch history menu item](#remove-from-watch-history-menu-item) | Adds a 'Remove from watch history' item to the menu of videos in feeds and lists, such as the Home feed, which removes the video from the watch history of the account. Apply together with the Morphe YouTube patches. |  |
 
 </details>
 

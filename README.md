@@ -8,6 +8,7 @@ Add-on YouTube and Reddit patches for use with [Morphe](https://morphe.software)
 - **Keyboard fullscreen shortcut**: the `F` key enters and exits fullscreen.
 - **Keyboard minimize shortcut**: the `Esc` key minimizes the video to the miniplayer.
 - **Keyboard frame step shortcuts**: the `,` and `.` keys step the video one frame back and forward.
+- **Keyboard top comments shortcut**: the `K` key shows the Top comments, such as to leave the Timed comments.
 - **Keyboard SponsorBlock skip shortcut**: the `Enter` key presses the SponsorBlock skip button.
 - **DeArrow original titles**: videos with a DeArrow title show both the DeArrow title and the
   original title, such as `Clear, descriptive title | YOU WON'T BELIEVE WHAT HAPPENED`.
@@ -62,6 +63,16 @@ apply it **together with** the official "Morphe Patches" source, never on its ow
 - The length of a frame comes from the video quality, such as 60 fps for 1080p60, and 30 fps
   if the quality has no frame rate. The **Frame rate** patch option sets a fixed frame rate instead.
 - `<` and `>` (with Shift) keep their default action.
+
+### Keyboard top comments shortcut
+
+- `K` shows the **Top** comments of the open video: it scrolls the comments to the top and presses the Top
+  sort button. If the comments are closed, it opens them first.
+- Made for the **Timed** comments, whose list follows the video, so the sort buttons above it (Top, Timed,
+  Newest) are hard to scroll back to.
+- The Top button is found by its English text, so it only works with the app in English. If the button isn't
+  found, a message says so.
+- The key is its **Key** patch option. Like the other shortcuts, it only works while a video is open.
 
 ### Keyboard SponsorBlock skip shortcut
 
